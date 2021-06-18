@@ -11,21 +11,21 @@ import com.example.askiitianscreen.databinding.RvItemBinding
 class MyPrepForAdapter(
     private val btnNames: List<String>,
     private val listener: OnItemClickListener
-) : RecyclerView.Adapter<MyPrepForAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<MyPrepForAdapter.MyPrepViewHolder>() {
 
     private var selectedPos = -1
     private var prevSelectedPos = -1
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPrepViewHolder {
         context = parent.context
         val binding = RvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return MyPrepViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(btnNames[position])
-        holder.selectedOption(selectedPos, position)
+    override fun onBindViewHolder(holderPrep: MyPrepViewHolder, position: Int) {
+        holderPrep.bind(btnNames[position])
+        holderPrep.selectedOption(selectedPos, position)
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +34,7 @@ class MyPrepForAdapter(
             btnNames.size
     }
 
-    inner class MyViewHolder(private val binding: RvItemBinding) :
+    inner class MyPrepViewHolder(private val binding: RvItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(btnText: String) {
             binding.btnItem.text = btnText
