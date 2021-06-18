@@ -15,12 +15,9 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
     private lateinit var binding: ActivityMainBinding
     private val TAG = "MainActivity"
 
-    companion object {
-        var count = 0
-        var prevClickedClassPos = -1
-        var prevClickedBoardPos = -1
-        var prevClickedPrepOptionPos = -1
-    }
+    private var prevClickedClassPos = -1
+    private var prevClickedBoardPos = -1
+    private var prevClickedPrepOptionPos = -1
 
     private var userSelection: ArrayList<String> = ArrayList()
 
@@ -110,9 +107,11 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
         if (pos == prevClickedPrepOptionPos) {
             userSelection[2] = "0"
             prevClickedPrepOptionPos = -1
+            Log.d(TAG, "onPrepItemClick: (on double click) user selection = ${userSelection[2]}")
         } else {
             userSelection[2] = preparingForOptions()[pos]
             prevClickedPrepOptionPos = pos
+            Log.d(TAG, "onPrepItemClick: (on single click) user selection = ${userSelection[2]}")
         }
     }
 
