@@ -43,7 +43,6 @@ class MyAdapter(
     interface OnItemClickListener {
         fun onItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
     }
-
 }
 
 
