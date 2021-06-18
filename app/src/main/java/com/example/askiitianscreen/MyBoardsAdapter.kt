@@ -11,19 +11,19 @@ import com.example.askiitianscreen.databinding.RvItemBinding
 class MyBoardsAdapter(
     private val btnNames: List<String>,
     private val listener: OnItemClickListener
-) : RecyclerView.Adapter<MyBoardsAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<MyBoardsAdapter.MyBoardViewHolder>() {
 
     private var selectedPos = -1
     private var prevSelectedPos = -1
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyBoardViewHolder {
         context = parent.context
         val binding = RvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return MyBoardViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyBoardViewHolder, position: Int) {
         holder.bind(btnNames[position])
         holder.selectedOption(selectedPos, position)
     }
@@ -34,7 +34,7 @@ class MyBoardsAdapter(
             btnNames.size
     }
 
-    inner class MyViewHolder(private val binding: RvItemBinding) :
+    inner class MyBoardViewHolder(private val binding: RvItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(btnText: String) {
             binding.btnItem.text = btnText

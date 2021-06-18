@@ -44,13 +44,13 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
             adapter = MyPrepForAdapter(preparingForOptions(), this@MainActivity)
         }
 
-        userSelection.add("1")
-        userSelection.add("1")
-        userSelection.add("1")
+        userSelection.add("0")
+        userSelection.add("0")
+        userSelection.add("0")
 
         binding.saveBtn.setOnClickListener {
             Log.d(TAG, userSelection.toString())
-            if (!userSelection.contains("1")) {
+            if (!userSelection.contains("0")) {
                 Intent(this, SecondActivity::class.java).also {
                     it.putExtra("selected_option", userSelection)
                     startActivity(it)
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
     override fun onBoardItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
         Log.d(TAG, "onBoardItemClick: $pos & ${selectBoardNames()[pos]}")
         if (pos == prevClickedBoardPos) {
-            userSelection[1] = "1"
+            userSelection[1] = "0"
             prevClickedBoardPos = -1
         } else {
             userSelection[1] = selectBoardNames()[pos]
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
     override fun onClassItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
         Log.d(TAG, "onClassItemClick: $pos & ${selectClassBtnNames()[pos]}")
         if (pos == prevClickedClassPos) {
-            userSelection[0] = "1"
+            userSelection[0] = "0"
             prevClickedClassPos = -1
         } else {
             userSelection[0] = selectClassBtnNames()[pos]
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
     override fun onPrepItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
         Log.d(TAG, "onPrepItemClick: $pos & ${preparingForOptions()[pos]}")
         if (pos == prevClickedPrepOptionPos) {
-            userSelection[2] = "1"
+            userSelection[2] = "0"
             prevClickedPrepOptionPos = -1
         } else {
             userSelection[2] = preparingForOptions()[pos]
