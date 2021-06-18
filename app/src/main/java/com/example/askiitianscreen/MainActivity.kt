@@ -5,21 +5,21 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.askiitianscreen.databinding.ActivityMainBinding
 import com.example.askiitianscreen.databinding.RvItemBinding
 
-class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
+class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
+    MyBoardsAdapter.OnItemClickListener, MyPrepForAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private val TAG = "MainActivity"
 
     companion object {
         var count = 0
-        var clickedClassesPos = -1
-        var clickedBoardsPos = -1
-        var clickedOptionsPos = -1
+        var prevClickedClassPos = -1
+        var prevClickedBoardPos = -1
+        var prevClickedPrepOptionPos = -1
     }
 
     private var userSelection: ArrayList<String> = ArrayList()
@@ -31,17 +31,17 @@ class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
         binding.rvSelectClass.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 3)
-            adapter = MyAdapter(selectClassBtnNames(), this@MainActivity)
+            adapter = MyClassesAdapter(selectClassBtnNames(), this@MainActivity)
         }
 
         binding.rvSelectBoard.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 3)
-            adapter = MyAdapter(selectBoardNames(), this@MainActivity)
+            adapter = MyBoardsAdapter(selectBoardNames(), this@MainActivity)
         }
 
         binding.rvPreparingFor.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 3)
-            adapter = MyAdapter(preparingForOptions(), this@MainActivity)
+            adapter = MyPrepForAdapter(preparingForOptions(), this@MainActivity)
         }
 
         userSelection.add("1")
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
         binding.saveBtn.setOnClickListener {
             Log.d(TAG, userSelection.toString())
-            if (!userSelection.contains("1")){
+            if (!userSelection.contains("1")) {
                 Intent(this, SecondActivity::class.java).also {
                     it.putExtra("selected_option", userSelection)
                     startActivity(it)
@@ -83,34 +83,36 @@ class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         return listOf("School Exam", "JEE", "NEET")
     }
 
-    override fun onItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+    override fun onBoardItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+        Log.d(TAG, "onBoardItemClick: $pos & ${selectBoardNames()[pos]}")
+        if (pos == prevClickedBoardPos) {
+            userSelection[1] = "1"
+            prevClickedBoardPos = -1
+        } else {
+            userSelection[1] = selectBoardNames()[pos]
+            prevClickedBoardPos = pos
+        }
+    }
 
-        when (btns) {
+    override fun onClassItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+        Log.d(TAG, "onClassItemClick: $pos & ${selectClassBtnNames()[pos]}")
+        if (pos == prevClickedClassPos) {
+            userSelection[0] = "1"
+            prevClickedClassPos = -1
+        } else {
+            userSelection[0] = selectClassBtnNames()[pos]
+            prevClickedClassPos = pos
+        }
+    }
 
-            selectClassBtnNames() -> {
-                Log.d(TAG, "onItemClick: ${btns[pos]}")
-                if (clickedClassesPos != pos) {
-                    userSelection[0] = btns[pos]
-                    clickedClassesPos = pos
-                }
-            }
-
-            selectBoardNames() -> {
-                Log.d(TAG, "onItemClick: ${btns[pos]}")
-                if (clickedBoardsPos != pos) {
-                    userSelection[1] = btns[pos]
-                    clickedBoardsPos = pos
-                }
-            }
-
-            preparingForOptions() -> {
-                Log.d(TAG, "onItemClick: ${btns[pos]}")
-                if (clickedOptionsPos != pos) {
-                    userSelection[2] = btns[pos]
-                    clickedOptionsPos = pos
-                }
-            }
-
+    override fun onPrepItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+        Log.d(TAG, "onPrepItemClick: $pos & ${preparingForOptions()[pos]}")
+        if (pos == prevClickedPrepOptionPos) {
+            userSelection[2] = "1"
+            prevClickedPrepOptionPos = -1
+        } else {
+            userSelection[2] = preparingForOptions()[pos]
+            prevClickedPrepOptionPos = pos
         }
     }
 
