@@ -42,6 +42,7 @@ class MyPrepForAdapter(
         fun bind(btnText: String) {
             binding.btnItem.text = btnText
         }
+
         init {
             binding.btnItem.setOnClickListener(this)
         }
@@ -61,7 +62,8 @@ class MyPrepForAdapter(
 
             if (position == prevSelectedPos) {
 //                binding.btnItem.isSelected = false
-                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
                 Log.d("Main", "selectedOption Yellow -> 1 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = -1
                 return
@@ -69,12 +71,14 @@ class MyPrepForAdapter(
             if (selectedPos == position) {
 //                binding.btnItem.isSelected = true
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.sky_blue))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
                 Log.d("Main", "selectedOption Sky Blue -> 2 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = position
             } else {
 //                binding.btnItem.isSelected = false
-                    binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
-                    Log.d("Main", "selectedOption Yellow -> 3 MyPrepAdapter: ${btnNames[position]}")
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
+                Log.d("Main", "selectedOption Yellow -> 3 MyPrepAdapter: ${btnNames[position]}")
             }
         }
     }
