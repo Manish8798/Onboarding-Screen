@@ -73,18 +73,24 @@
                 android:id="@+id/rv_select_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/select_class_tv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_select_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/select_board_tv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_preparing_for"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/select_preparing_opt_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
