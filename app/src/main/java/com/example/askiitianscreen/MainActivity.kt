@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.askiitianscreen.databinding.ActivityMainBinding
-import com.example.askiitianscreen.databinding.RvItemBinding
 
 class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
     MyBoardsAdapter.OnItemClickListener, MyPrepForAdapter.OnItemClickListener {
@@ -80,7 +79,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
         return listOf("School Exam", "JEE", "NEET")
     }
 
-    override fun onBoardItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+    override fun onBoardItemClick(pos: Int, btns: List<String>) {
         Log.d(TAG, "onBoardItemClick: $pos & ${selectBoardNames()[pos]}")
         if (pos == prevClickedBoardPos) {
             userSelection[1] = "0"
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
         }
     }
 
-    override fun onClassItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+    override fun onClassItemClick(pos: Int, btns: List<String>) {
         Log.d(TAG, "onClassItemClick: $pos & ${selectClassBtnNames()[pos]}")
         if (pos == prevClickedClassPos) {
             userSelection[0] = "0"
@@ -102,7 +101,7 @@ class MainActivity : AppCompatActivity(), MyClassesAdapter.OnItemClickListener,
         }
     }
 
-    override fun onPrepItemClick(pos: Int, btns: List<String>, binding: RvItemBinding) {
+    override fun onPrepItemClick(pos: Int, btns: List<String>) {
         Log.d(TAG, "onPrepItemClick: $pos & ${preparingForOptions()[pos]}")
         if (pos == prevClickedPrepOptionPos) {
             userSelection[2] = "0"

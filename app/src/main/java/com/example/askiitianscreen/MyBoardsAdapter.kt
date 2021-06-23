@@ -51,7 +51,7 @@ class MyBoardsAdapter(
             selectedPos = adapterPosition
             notifyItemChanged(selectedPos)
 
-            listener.onBoardItemClick(adapterPosition, btnNames, binding)
+            listener.onBoardItemClick(adapterPosition, btnNames)
         }
 
         fun selectedOption(selectedPos: Int, position: Int) {
@@ -78,7 +78,7 @@ class MyBoardsAdapter(
     }
 
     interface OnItemClickListener {
-        fun onBoardItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
+        fun onBoardItemClick(pos: Int, btns: List<String>)
     }
 
 }

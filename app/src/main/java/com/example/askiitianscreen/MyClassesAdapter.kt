@@ -53,7 +53,7 @@ class MyClassesAdapter(
             selectedPos = adapterPosition
             notifyItemChanged(selectedPos)
 
-            listener.onClassItemClick(adapterPosition, btnNames, binding)
+            listener.onClassItemClick(adapterPosition, btnNames)
         }
 
         fun selectedOption(selectedPos: Int, position: Int) {
@@ -80,7 +80,7 @@ class MyClassesAdapter(
     }
 
     interface OnItemClickListener {
-        fun onClassItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
+        fun onClassItemClick(pos: Int, btns: List<String>)
     }
 
 }

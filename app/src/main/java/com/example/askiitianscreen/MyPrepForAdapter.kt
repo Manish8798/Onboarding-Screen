@@ -55,7 +55,7 @@ class MyPrepForAdapter(
             selectedPos = adapterPosition
             notifyItemChanged(selectedPos)
 
-            listener.onPrepItemClick(adapterPosition, btnNames, binding)
+            listener.onPrepItemClick(adapterPosition, btnNames)
         }
 
         fun selectedOption(selectedPos: Int, position: Int) {
@@ -84,7 +84,7 @@ class MyPrepForAdapter(
     }
 
     interface OnItemClickListener {
-        fun onPrepItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
+        fun onPrepItemClick(pos: Int, btns: List<String>)
     }
 
 }
