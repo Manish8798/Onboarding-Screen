@@ -61,24 +61,21 @@ class MyPrepForAdapter(
         fun selectedOption(selectedPos: Int, position: Int) {
 
             if (position == prevSelectedPos) {
-//                binding.btnItem.isSelected = false
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
                 binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
-                Log.d("Main", "selectedOption Yellow -> 1 MyPrepAdapter: ${btnNames[position]}")
+                Log.d("Main", "selectedOption Grey -> 1 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = -1
                 return
             }
             if (selectedPos == position) {
-//                binding.btnItem.isSelected = true
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.sky_blue))
                 binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
                 Log.d("Main", "selectedOption Sky Blue -> 2 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = position
             } else {
-//                binding.btnItem.isSelected = false
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
                 binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
-                Log.d("Main", "selectedOption Yellow -> 3 MyPrepAdapter: ${btnNames[position]}")
+                Log.d("Main", "selectedOption Grey -> 3 MyPrepAdapter: ${btnNames[position]}")
             }
         }
     }
