@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.askiitianscreen.databinding.RvItemBinding
-import java.lang.ref.WeakReference
 
 class MyPrepForAdapter(
     private val btnNames: List<String>,

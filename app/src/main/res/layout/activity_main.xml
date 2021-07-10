@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@android:color/holo_blue_light"
+        android:src="@drawable/android_logo_white"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/select_class_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
@@ -41,7 +41,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/select_board_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
@@ -56,7 +56,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/select_preparing_opt_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
