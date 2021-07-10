@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.askiitianscreen.databinding.RvItemBinding
-import java.lang.ref.WeakReference
 
 class MyPrepForAdapter(
     private val btnNames: List<String>,
@@ -42,6 +41,7 @@ class MyPrepForAdapter(
         fun bind(btnText: String) {
             binding.btnItem.text = btnText
         }
+
         init {
             binding.btnItem.setOnClickListener(this)
         }
@@ -54,33 +54,33 @@ class MyPrepForAdapter(
             selectedPos = adapterPosition
             notifyItemChanged(selectedPos)
 
-            listener.onPrepItemClick(adapterPosition, btnNames, binding)
+            listener.onPrepItemClick(adapterPosition, btnNames)
         }
 
         fun selectedOption(selectedPos: Int, position: Int) {
 
             if (position == prevSelectedPos) {
-//                binding.btnItem.isSelected = false
-                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
-                Log.d("Main", "selectedOption Yellow -> 1 MyPrepAdapter: ${btnNames[position]}")
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
+                Log.d("Main", "selectedOption Grey -> 1 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = -1
                 return
             }
             if (selectedPos == position) {
-//                binding.btnItem.isSelected = true
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.sky_blue))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
                 Log.d("Main", "selectedOption Sky Blue -> 2 MyPrepAdapter: ${btnNames[position]}")
                 prevSelectedPos = position
             } else {
-//                binding.btnItem.isSelected = false
-                    binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
-                    Log.d("Main", "selectedOption Yellow -> 3 MyPrepAdapter: ${btnNames[position]}")
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
+                Log.d("Main", "selectedOption Grey -> 3 MyPrepAdapter: ${btnNames[position]}")
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onPrepItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
+        fun onPrepItemClick(pos: Int, btns: List<String>)
     }
 
 }

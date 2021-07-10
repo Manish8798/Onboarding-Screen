@@ -51,14 +51,15 @@ class MyBoardsAdapter(
             selectedPos = adapterPosition
             notifyItemChanged(selectedPos)
 
-            listener.onBoardItemClick(adapterPosition, btnNames, binding)
+            listener.onBoardItemClick(adapterPosition, btnNames)
         }
 
         fun selectedOption(selectedPos: Int, position: Int) {
 
             if (position == prevSelectedPos) {
 //                binding.btnItem.isSelected = false
-                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
                 prevSelectedPos = -1
                 return
             }
@@ -66,16 +67,18 @@ class MyBoardsAdapter(
             if (selectedPos == position) {
 //                binding.btnItem.isSelected = true
                 binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.sky_blue))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.white))
                 prevSelectedPos = position
             } else {
 //                binding.btnItem.isSelected = false
-                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.yellow))
+                binding.btnItem.background.setTint(ContextCompat.getColor(context, R.color.grey))
+                binding.btnItem.setTextColor(ContextCompat.getColor(context, R.color.black))
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onBoardItemClick(pos: Int, btns: List<String>, binding: RvItemBinding)
+        fun onBoardItemClick(pos: Int, btns: List<String>)
     }
 
 }
